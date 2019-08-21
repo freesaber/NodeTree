@@ -3,4 +3,6 @@
 
 参考项目：[https://github.com/freesaber/NodeLearning/tree/master/scott-film](https://github.com/freesaber/NodeLearning/tree/master/scott-film)
 
-项目演示：![demo.png](https://img2018.cnblogs.com/blog/221923/201908/221923-20190821154442094-1040190187.jpg "demo")
+项目演示：
+
+![demo.png](https://img2018.cnblogs.com/blog/221923/201908/221923-20190821154442094-1040190187.jpg "demo")
