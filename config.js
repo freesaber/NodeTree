@@ -6,9 +6,9 @@ var wechat_file = path.join(__dirname, './config/wechat.txt')
 
 var config = {
   wechat: {
-    appID: 'wx336c6e1c5af15822',
-    appSecret: 'a8e58a388d466bf9777ab7cdd74994f1',
-    token: 'freesaber',
+    appID: '', // 开发者ID(AppID)
+    appSecret: '', //开发者密码(AppSecret)
+    token: 'freesaber', // 令牌(Token)
     getAccessToken: function () { //从文件获取票据
       return util.readFileAsync(wechat_file);
     },

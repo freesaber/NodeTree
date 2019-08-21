@@ -12,11 +12,10 @@ exports.reply = function* (next) {
   var reply = '平台使用说明：'+
   '\n发送1，查看最新“求购”信息！'+
   '\n发送2，查看最新“出售”信息！'+
-  // '\n发送3，查看会员信息'+
   '\n'+
-  '\n如果要发布求购信息，请以"买树"开头。'+
+  '\n如果要发布求购信息，请以"买树"开头！'+
   '\n'+
-  '\n如果要发布出售信息，请以"卖树"开头。';
+  '\n如果要发布出售信息，请以"卖树"开头！';
 
   if (message.MsgType === 'event') {
     if (message.Event === 'subscribe') {
@@ -66,25 +65,25 @@ exports.reply = function* (next) {
       });
     } else if (content === '3') {
       //通过记录发送这条消息的openid和时间，来推断用户，在数据库中设置成会员
-      // if(users.length==0){
-      //   yield db.insertOne('vip', user);
-      //   reply='非会员，如若需要，请联系管理员注册！';
-      // }else{
-      //   if(user.auth>0){
-      //     reply='您已经是会员！';
-      //   }else{
-      //     reply='非会员，如若需要，请联系管理员13951683085注册！';
-      //   }
-      // }
+      if(users.length==0){
+        yield db.insertOne('vip', user);
+        reply='非会员，如若需要，请联系管理员注册！';
+      }else{
+        if(user.auth>0){
+          reply='您已经是会员！';
+        }else{
+          reply='非会员，如若需要，请联系管理员13951683085注册！';
+        }
+      }
     } else {
       var cc = 2;
       if (user.auth > 10) {
         reply = '管理员，您好！';
         cc = 500;
       } else if (user.auth > 0) {
-        cc = 10;
+        cc = 20;
       } else {
-        cc = 2;
+        cc = 5;
       }
       if (content.startsWith('买树')) {
         if(content.length>100){

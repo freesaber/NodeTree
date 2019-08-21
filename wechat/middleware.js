@@ -12,20 +12,23 @@ module.exports = function (opts, handler) {
 
   return function* (next) {
     var token = opts.token;
-    var signature = this.query.signature;
-    var nonce = this.query.nonce;
-    var timestamp = this.query.timestamp;
+    var signature = this.query.signature; // 签名值
+    var nonce = this.query.nonce; // 随机参数
+    var timestamp = this.query.timestamp; // 时间戳
     var echostr = this.query.echostr;
-    var str = [token, timestamp, nonce].sort().join('');
-    var sha = sha1(str);
+    var str = [token, timestamp, nonce].sort().join(''); // 字典排序
+    var sha = sha1(str); // 加密
 
     if (this.method === 'GET') {
+      // 在开发--基本配置--服务器配置中配置微信服务器，填写url后，微信服务器会发送一个GET请求到这里
       if (sha === signature) {
-        this.body = echostr + '';
+        this.body = echostr + ''; // 如果是GET请求，原样返回echostr字符串给微信服务器
       } else {
+        // 不是微信过来的请求
         this.body = 'wrong';
       }
     } else if (this.method === 'POST') {
+      // 公众号消息推送
       if (sha != signature) {
         this.body = 'wrong';
         return false;
