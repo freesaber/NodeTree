@@ -5,7 +5,7 @@
 
 项目演示：
 
-![demo.png](https://img2018.cnblogs.com/blog/221923/201908/221923-20190821154442094-1040190187.jpg "demo")
+![公众号](http://www.freesaber.cn/img/nodetree.jpg "公众号")
 
 说明：
 1. config.js中填写自己的微信公众号配置信息
